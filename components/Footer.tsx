@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Download, Mail, MapPin, Phone } from "lucide-react";
 import { CONTACT } from "@/lib/contact";
 import { useQuoteModal } from "@/lib/quote-modal-context";
@@ -19,8 +20,17 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <span className="font-display text-xl text-cream">Golden Timbers</span>
-            <p className="mt-1 text-xs uppercase tracking-[0.28em] text-ochre-light">
+            <div className="flex items-center gap-3">
+              <Image
+                src="/golden-timbers-mark.png"
+                alt=""
+                width={428}
+                height={463}
+                className="h-9 w-auto"
+              />
+              <span className="font-display text-xl text-cream">Golden Timbers</span>
+            </div>
+            <p className="mt-3 text-xs uppercase tracking-[0.28em] text-ochre-light">
               Timber Yard &amp; Sawmill
             </p>
             <p className="mt-5 flex items-start gap-2.5 text-sm leading-relaxed">

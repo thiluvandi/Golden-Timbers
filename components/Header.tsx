@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useQuoteModal } from "@/lib/quote-modal-context";
@@ -24,7 +25,26 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNavClick = () => setMobileOpen(false);
+  const handleNavClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    event.preventDefault();
+    const wasMobileOpen = mobileOpen;
+    setMobileOpen(false);
+
+    const scrollToTarget = () => {
+      const id = href.replace("#", "");
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    if (wasMobileOpen) {
+      // let the mobile menu finish collapsing before measuring the scroll target
+      window.setTimeout(scrollToTarget, 260);
+    } else {
+      scrollToTarget();
+    }
+  };
 
   return (
     <header
@@ -34,13 +54,23 @@ export default function Header() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-        <a href="#hero" className="flex flex-col leading-none">
-          <span className="font-display text-xl tracking-tight text-forest">
-            Golden Timbers
-          </span>
-          <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.32em] text-ochre">
-            Bengaluru · Est. 1985
+      <div className="mx-auto flex min-h-18 max-w-7xl items-center justify-between px-6 py-3 lg:px-10">
+        <a href="#hero" className="flex items-center gap-3" aria-label="Golden Timbers home">
+          <Image
+            src="/golden-timbers-mark.png"
+            alt=""
+            width={428}
+            height={463}
+            priority
+            className="h-9 w-auto sm:h-10"
+          />
+          <span className="flex flex-col leading-tight">
+            <span className="font-display text-lg tracking-tight text-forest sm:text-xl">
+              Golden Timbers
+            </span>
+            <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.28em] text-ochre">
+              Bengaluru · Est. 1985
+            </span>
           </span>
         </a>
 
@@ -49,6 +79,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="text-sm text-charcoal/75 transition hover:text-forest"
             >
               {link.label}
@@ -88,7 +119,7 @@ export default function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={handleNavClick}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="rounded-lg px-2 py-3 text-sm text-charcoal/80 transition hover:bg-sand"
                 >
                   {link.label}
@@ -96,7 +127,7 @@ export default function Header() {
               ))}
               <button
                 onClick={() => {
-                  handleNavClick();
+                  setMobileOpen(false);
                   open();
                 }}
                 className="mt-2 rounded-full bg-forest px-5 py-3 text-sm font-medium text-cream"

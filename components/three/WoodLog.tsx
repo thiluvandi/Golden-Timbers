@@ -3,12 +3,15 @@
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
-import { Float } from "@react-three/drei";
+import { Float, useTexture } from "@react-three/drei";
 import { createBarkMaterial, createMillMaterial, createRingMaterial } from "./materials";
 
 const RADIUS = 1.05;
 const HEIGHT = 3.4;
 const MILL_ARC = Math.PI * 0.4;
+const LOGO_ASPECT = 463 / 1106;
+const DECAL_WIDTH = RADIUS * 1.5;
+const DECAL_HEIGHT = DECAL_WIDTH * LOGO_ASPECT;
 
 interface WoodLogProps {
   scrollProgress: React.MutableRefObject<number>;
@@ -39,6 +42,10 @@ export default function WoodLog({ scrollProgress }: WoodLogProps) {
     () => createRingMaterial(RADIUS, "#3a2416", "#8c6239", "#e3c99a"),
     []
   );
+
+  const logoTexture = useTexture("/golden-timbers-logo.png");
+  logoTexture.colorSpace = THREE.SRGBColorSpace;
+  logoTexture.anisotropy = 8;
 
   const spin = useRef(0);
 
@@ -84,6 +91,17 @@ export default function WoodLog({ scrollProgress }: WoodLogProps) {
             </mesh>
             <mesh position={[0, -HEIGHT / 2, 0]} rotation={[Math.PI / 2, 0, 0]} material={ringMaterial} receiveShadow>
               <circleGeometry args={[RADIUS, 72]} />
+            </mesh>
+            <mesh position={[0, HEIGHT / 2 + 0.008, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+              <planeGeometry args={[DECAL_WIDTH, DECAL_HEIGHT]} />
+              <meshBasicMaterial
+                map={logoTexture}
+                transparent
+                alphaTest={0.4}
+                toneMapped={false}
+                polygonOffset
+                polygonOffsetFactor={-1}
+              />
             </mesh>
           </group>
         </Float>
