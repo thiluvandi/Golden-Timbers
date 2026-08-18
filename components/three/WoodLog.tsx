@@ -72,7 +72,7 @@ export default function WoodLog({ scrollProgress }: WoodLogProps) {
   });
 
   return (
-    <group rotation={[0.36, 0.42, -0.14]}>
+    <group rotation={[0.62, 0.42, -0.14]}>
       <group ref={dynamicGroup}>
         <Float speed={1.3} rotationIntensity={0.1} floatIntensity={0.55} floatingRange={[-0.09, 0.09]}>
           <group>

@@ -4,10 +4,12 @@ import Catalog from "@/components/Catalog";
 import Services from "@/components/Services";
 import Sustainability from "@/components/Sustainability";
 import Estimator from "@/components/Estimator";
+import HashScrollHandler from "@/components/HashScrollHandler";
 
 export default function Home() {
   return (
     <>
+      <HashScrollHandler />
       <Hero />
       <Metrics />
       <Catalog />

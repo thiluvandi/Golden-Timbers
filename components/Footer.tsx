@@ -1,15 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Download, Mail, MapPin, Phone } from "lucide-react";
 import { CONTACT } from "@/lib/contact";
 import { useQuoteModal } from "@/lib/quote-modal-context";
 
 const NAV_LINKS = [
-  { label: "Species Catalog", href: "#catalog" },
-  { label: "Sawmill Services", href: "#services" },
-  { label: "Sustainability & Kiln Drying", href: "#sustainability" },
-  { label: "Trade Inquiry", href: "#estimator" },
+  { label: "Species Catalog", href: "/#catalog" },
+  { label: "Sawmill Services", href: "/#services" },
+  { label: "Sustainability & Kiln Drying", href: "/#sustainability" },
+  { label: "Trade Inquiry", href: "/#estimator" },
+  { label: "About Us", href: "/about" },
 ];
 
 export default function Footer() {
@@ -52,9 +54,9 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="transition hover:text-ochre-light">
+                  <Link href={link.href} className="transition hover:text-ochre-light">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

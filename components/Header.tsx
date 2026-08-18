@@ -2,21 +2,25 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useQuoteModal } from "@/lib/quote-modal-context";
 
 const NAV_LINKS = [
-  { label: "Species Catalog", href: "#catalog" },
-  { label: "Sawmill Services", href: "#services" },
-  { label: "Sustainability & Kiln Drying", href: "#sustainability" },
-  { label: "Trade Inquiry", href: "#estimator" },
+  { label: "Species Catalog", href: "/#catalog" },
+  { label: "Sawmill Services", href: "/#services" },
+  { label: "Sustainability & Kiln Drying", href: "/#sustainability" },
+  { label: "Trade Inquiry", href: "/#estimator" },
+  { label: "About Us", href: "/about" },
 ];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { open } = useQuoteModal();
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -29,12 +33,18 @@ export default function Header() {
     event: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
+    // Only intercept same-page hash links; plain page links (e.g. /about) navigate normally.
+    if (!href.startsWith("/#") || pathname !== "/") {
+      setMobileOpen(false);
+      return;
+    }
+
     event.preventDefault();
     const wasMobileOpen = mobileOpen;
     setMobileOpen(false);
 
     const scrollToTarget = () => {
-      const id = href.replace("#", "");
+      const id = href.replace("/#", "");
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
@@ -55,7 +65,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex min-h-18 max-w-7xl items-center justify-between px-6 py-3 lg:px-10">
-        <a href="#hero" className="flex items-center gap-3" aria-label="Golden Timbers home">
+        <Link href="/" className="flex items-center gap-3" aria-label="Golden Timbers home">
           <Image
             src="/golden-timbers-mark.png"
             alt=""
@@ -72,18 +82,18 @@ export default function Header() {
               Bengaluru · Est. 1985
             </span>
           </span>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-9 lg:flex">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
               className="text-sm text-charcoal/75 transition hover:text-forest"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -116,14 +126,14 @@ export default function Header() {
           >
             <div className="flex flex-col gap-1 px-6 py-5">
               {NAV_LINKS.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className="rounded-lg px-2 py-3 text-sm text-charcoal/80 transition hover:bg-sand"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <button
                 onClick={() => {
