@@ -36,7 +36,16 @@ export default function Hero() {
       id="hero"
       className="relative min-h-[100svh] w-full overflow-hidden bg-cream"
     >
-      <div className="pointer-events-none absolute inset-0 opacity-70" aria-hidden>
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          maskImage:
+            "linear-gradient(115deg, transparent 0%, rgba(0,0,0,0.7) 100%)",
+          WebkitMaskImage:
+            "linear-gradient(115deg, transparent 0%, rgba(0,0,0,0.7) 100%)",
+        }}
+        aria-hidden
+      >
         <Image
           src="/hero-bg.jpg"
           alt=""
