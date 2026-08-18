@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { useRef } from "react";
 import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, MoveDown } from "lucide-react";
@@ -35,6 +36,26 @@ export default function Hero() {
       id="hero"
       className="relative min-h-[100svh] w-full overflow-hidden bg-cream"
     >
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          maskImage:
+            "linear-gradient(100deg, transparent 0%, transparent 32%, rgba(0,0,0,0.55) 62%, rgba(0,0,0,0.9) 100%)",
+          WebkitMaskImage:
+            "linear-gradient(100deg, transparent 0%, transparent 32%, rgba(0,0,0,0.55) 62%, rgba(0,0,0,0.9) 100%)",
+        }}
+        aria-hidden
+      >
+        <Image
+          src="/hero-bg.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+          style={{ filter: "grayscale(0.5) sepia(0.1) contrast(1.05)" }}
+        />
+      </div>
+
       <div
         className="pointer-events-none absolute inset-0 opacity-35 sm:opacity-55 lg:opacity-100"
         aria-hidden
@@ -72,7 +93,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="text-balance mt-5 max-w-xl font-display text-5xl leading-[1.05] text-forest sm:text-6xl lg:text-[4rem] xl:text-[4.5rem]"
         >
-          Sustainably Sourced.
+          Premium Timber.
           <br />
           Precision Milled.
         </motion.h1>

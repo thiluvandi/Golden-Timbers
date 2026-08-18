@@ -8,8 +8,8 @@ import { useQuoteModal } from "@/lib/quote-modal-context";
 
 const NAV_LINKS = [
   { label: "Species Catalog", href: "/#catalog" },
-  { label: "Sawmill Services", href: "/#services" },
-  { label: "Sustainability & Kiln Drying", href: "/#sustainability" },
+  { label: "Our Services", href: "/#services" },
+  { label: "Our Process", href: "/#sustainability" },
   { label: "Trade Inquiry", href: "/#estimator" },
   { label: "About Us", href: "/about" },
 ];

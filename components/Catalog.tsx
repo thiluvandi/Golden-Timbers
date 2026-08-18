@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { categories, species } from "@/lib/data/species";
@@ -20,8 +21,23 @@ export default function Catalog() {
   );
 
   return (
-    <section id="catalog" className="bg-cream py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+    <section id="catalog" className="relative overflow-hidden bg-cream py-24 sm:py-32">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.08]" aria-hidden>
+        <Image
+          src="/catalog-bg.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+          style={{ filter: "grayscale(0.6) sepia(0.1) contrast(1.05)" }}
+        />
+      </div>
+      <div
+        className="pointer-events-none absolute inset-0 bg-cream/70"
+        aria-hidden
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex flex-col items-start justify-between gap-6 border-b border-line pb-10 sm:flex-row sm:items-end">
           <div className="max-w-xl">
             <p className="text-xs font-medium uppercase tracking-[0.3em] text-ochre">
@@ -63,7 +79,16 @@ export default function Catalog() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.45, delay: (i % 6) * 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-white transition-shadow hover:shadow-[0_20px_45px_-25px_rgba(28,40,38,0.35)]"
+              onClick={() => setActiveSpecies(item)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setActiveSpecies(item);
+                }
+              }}
+              className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-line bg-white transition-shadow hover:shadow-[0_20px_45px_-25px_rgba(28,40,38,0.35)]"
             >
               <div
                 className="relative flex h-44 items-end overflow-hidden p-5 transition-transform duration-500 group-hover:scale-[1.03]"
@@ -104,7 +129,6 @@ export default function Catalog() {
                 </div>
 
                 <button
-                  onClick={() => setActiveSpecies(item)}
                   className="mt-auto flex items-center justify-between rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-forest transition hover:border-forest hover:bg-forest hover:text-cream"
                 >
                   View Specs &amp; Cut Sizes

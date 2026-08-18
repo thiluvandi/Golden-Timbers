@@ -37,10 +37,10 @@ export default function Sustainability() {
         <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <div className="max-w-xl">
             <p className="text-xs font-medium uppercase tracking-[0.3em] text-ochre-light">
-              Sustainability &amp; Kiln Drying
+              Our Process
             </p>
             <h2 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
-              Every plank, seasoned and verified before dispatch
+              Our process to ensure every output remains premium
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-cream/65">
