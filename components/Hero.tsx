@@ -40,9 +40,9 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           maskImage:
-            "linear-gradient(115deg, transparent 0%, rgba(0,0,0,0.7) 100%)",
+            "linear-gradient(115deg, rgba(0,0,0,0.6) 0%, transparent 100%)",
           WebkitMaskImage:
-            "linear-gradient(115deg, transparent 0%, rgba(0,0,0,0.7) 100%)",
+            "linear-gradient(115deg, rgba(0,0,0,0.6) 0%, transparent 100%)",
         }}
         aria-hidden
       >
@@ -66,11 +66,7 @@ export default function Hero() {
       </div>
 
       <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(115deg, var(--color-cream) 46%, rgba(251,251,250,0.5) 66%, rgba(251,251,250,0) 90%)",
-        }}
+        className="pointer-events-none absolute inset-0 bg-cream/45"
         aria-hidden
       />
 
