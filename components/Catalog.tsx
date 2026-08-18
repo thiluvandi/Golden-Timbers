@@ -21,34 +21,34 @@ export default function Catalog() {
   );
 
   return (
-    <section id="catalog" className="bg-cream py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="relative overflow-hidden">
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={{
-              maskImage:
-                "linear-gradient(115deg, rgba(0,0,0,0.6) 0%, transparent 100%)",
-              WebkitMaskImage:
-                "linear-gradient(115deg, rgba(0,0,0,0.6) 0%, transparent 100%)",
-            }}
-            aria-hidden
-          >
-            <Image
-              src="/catalog-bg.jpg"
-              alt=""
-              fill
-              sizes="100vw"
-              className="object-cover"
-              style={{ filter: "grayscale(0.5) sepia(0.1) contrast(1.05)" }}
-            />
-          </div>
-          <div
-            className="pointer-events-none absolute inset-0 bg-cream/45"
-            aria-hidden
+    <section id="catalog" className="bg-cream">
+      <div className="relative overflow-hidden pb-10 pt-24 sm:pt-32">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            maskImage:
+              "linear-gradient(115deg, rgba(0,0,0,0.6) 0%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(115deg, rgba(0,0,0,0.6) 0%, transparent 100%)",
+          }}
+          aria-hidden
+        >
+          <Image
+            src="/catalog-bg.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+            style={{ filter: "grayscale(0.5) sepia(0.1) contrast(1.05)" }}
           />
+        </div>
+        <div
+          className="pointer-events-none absolute inset-0 bg-cream/45"
+          aria-hidden
+        />
 
-          <div className="relative z-10 flex flex-col items-start justify-between gap-6 border-b border-line pb-10 sm:flex-row sm:items-end">
+        <div className="relative z-10 mx-auto max-w-7xl border-b border-line px-6 pb-10 lg:px-10">
+          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
             <div className="max-w-xl">
               <p className="text-xs font-medium uppercase tracking-[0.3em] text-ochre">
                 Species Catalog
@@ -64,7 +64,9 @@ export default function Catalog() {
             </div>
           </div>
         </div>
+      </div>
 
+      <div className="mx-auto max-w-7xl px-6 pb-24 sm:pb-32 lg:px-10">
         <div className="scrollbar-none mt-8 flex gap-2 overflow-x-auto pb-2">
           {categories.map((cat) => (
             <button
