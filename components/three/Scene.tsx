@@ -16,10 +16,10 @@ export default function Scene({ scrollProgress }: SceneProps) {
       camera={{ position: [0.6, 0.3, 9.2], fov: 27 }}
       className="!touch-auto"
     >
-      <ambientLight intensity={0.55} color="#f2ede3" />
+      <ambientLight intensity={0.85} color="#f2ede3" />
       <directionalLight position={[4, 5, 3]} intensity={1.5} color="#ffe6c2" />
-      <directionalLight position={[-4, -1.5, -3]} intensity={0.35} color="#c9d8d2" />
-      <pointLight position={[0, -2.5, 3]} intensity={0.4} color="#b3875a" />
+      <directionalLight position={[-4, -1.5, -3]} intensity={0.75} color="#d8c9a8" />
+      <pointLight position={[0, -2.5, 3]} intensity={0.55} color="#b3875a" />
       <Suspense fallback={null}>
         <group position={[1.9, -0.35, 0]} scale={0.78}>
           <WoodLog scrollProgress={scrollProgress} />

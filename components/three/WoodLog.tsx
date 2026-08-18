@@ -31,7 +31,7 @@ export default function WoodLog({ scrollProgress }: WoodLogProps) {
   }, []);
 
   const barkMaterial = useMemo(
-    () => createBarkMaterial("#2c1a11", "#5a3d24"),
+    () => createBarkMaterial("#4a2f1c", "#8a6238"),
     []
   );
   const millMaterial = useMemo(
