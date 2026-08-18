@@ -22,18 +22,27 @@ export default function Catalog() {
 
   return (
     <section id="catalog" className="relative overflow-hidden bg-cream py-24 sm:py-32">
-      <div className="pointer-events-none absolute inset-0 opacity-[0.08]" aria-hidden>
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          maskImage:
+            "linear-gradient(115deg, rgba(0,0,0,0.6) 0%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(115deg, rgba(0,0,0,0.6) 0%, transparent 100%)",
+        }}
+        aria-hidden
+      >
         <Image
           src="/catalog-bg.jpg"
           alt=""
           fill
           sizes="100vw"
           className="object-cover"
-          style={{ filter: "grayscale(0.6) sepia(0.1) contrast(1.05)" }}
+          style={{ filter: "grayscale(0.5) sepia(0.1) contrast(1.05)" }}
         />
       </div>
       <div
-        className="pointer-events-none absolute inset-0 bg-cream/70"
+        className="pointer-events-none absolute inset-0 bg-cream/45"
         aria-hidden
       />
 
