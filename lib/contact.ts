@@ -1,11 +1,11 @@
-// Placeholder contact details — swap for the real business number, email, address and GSTIN before launch.
+// Address, email, and GSTIN are still placeholders — swap for the real values before launch.
 export const CONTACT = {
   companyName: "Golden Timbers",
   tagline: "Timber Yard & Sawmill",
-  whatsappNumber: "919845012345", // placeholder — country code + number, no symbols
-  whatsappDisplay: "+91 98450 12345",
-  phoneDisplay: "+91 80 2672 4310",
-  phoneHref: "+918026724310",
+  whatsappNumber: "919945079235", // country code + number, no symbols
+  whatsappDisplay: "+91 99450 79235",
+  phoneDisplay: "+91 99450 79235",
+  phoneHref: "+919945079235",
   email: "trade@goldentimbers.in",
   addressLines: [
     "Golden Timbers Yard",
