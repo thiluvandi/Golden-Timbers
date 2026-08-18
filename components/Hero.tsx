@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -96,6 +97,20 @@ export default function Hero() {
           premium teak, pine, hardwoods, and custom sawmilling solutions across
           Karnataka.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Link
+            href="/about"
+            className="group mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-forest underline decoration-forest/30 underline-offset-4 transition hover:decoration-forest"
+          >
+            Read More About Us
+            <ArrowRight size={14} className="transition group-hover:translate-x-0.5" />
+          </Link>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
