@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, MoveDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useQuoteModal } from "@/lib/quote-modal-context";
 
 const Scene = dynamic(() => import("@/components/three/Scene"), { ssr: false });
@@ -90,7 +90,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 max-w-lg text-balance text-base leading-relaxed text-charcoal/75 sm:text-lg"
+          className="mt-6 max-w-lg text-balance text-base font-bold leading-relaxed text-charcoal/75 sm:text-lg"
         >
           Bangalore&rsquo;s trusted B2B timber trade partner since 1985. Delivering
           premium teak, pine, hardwoods, and custom sawmilling solutions across
@@ -117,17 +117,6 @@ export default function Hero() {
             Request Quote / Rate Sheet
           </button>
         </motion.div>
-
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-          onClick={scrollToCatalog}
-          className="absolute bottom-10 left-6 hidden items-center gap-2 text-xs uppercase tracking-[0.2em] text-charcoal/50 transition hover:text-forest sm:flex lg:left-10"
-        >
-          <MoveDown size={14} className="animate-bounce" />
-          Scroll
-        </motion.button>
       </motion.div>
     </section>
   );
