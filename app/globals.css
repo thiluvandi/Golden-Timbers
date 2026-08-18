@@ -1,26 +1,106 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Core palette */
+  --color-cream: #fbfbfa;
+  --color-sand: #f2ede3;
+  --color-sand-dark: #e9e0cf;
+  --color-forest: #1c2826;
+  --color-forest-light: #263531;
+  --color-espresso: #2c1a11;
+  --color-ochre: #8c6239;
+  --color-ochre-light: #b3875a;
+  --color-ochre-dark: #6e4c2a;
+  --color-charcoal: #201d1a;
+  --color-line: #e2d9c8;
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-cream: var(--color-cream);
+  --color-sand: var(--color-sand);
+  --color-sand-dark: var(--color-sand-dark);
+  --color-forest: var(--color-forest);
+  --color-forest-light: var(--color-forest-light);
+  --color-espresso: var(--color-espresso);
+  --color-ochre: var(--color-ochre);
+  --color-ochre-light: var(--color-ochre-light);
+  --color-ochre-dark: var(--color-ochre-dark);
+  --color-charcoal: var(--color-charcoal);
+  --color-line: var(--color-line);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-ochre);
+  color: var(--color-cream);
+}
+
+/* Thin, understated scrollbar to match the minimalist aesthetic */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-sand-dark);
+  border-radius: 999px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.grain-overlay {
+  position: relative;
+}
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
