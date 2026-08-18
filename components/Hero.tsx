@@ -56,19 +56,11 @@ export default function Hero() {
         />
       </div>
 
-      <div
-        className="pointer-events-none absolute inset-0 opacity-35 sm:opacity-55 lg:opacity-100"
-        aria-hidden
-      >
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
         <motion.div style={{ opacity: canvasOpacity }} className="absolute inset-0">
           <Scene scrollProgress={scrollProgress} />
         </motion.div>
       </div>
-
-      <div
-        className="pointer-events-none absolute inset-0 bg-cream/45"
-        aria-hidden
-      />
 
       <motion.div
         style={{ y: contentY }}
@@ -78,7 +70,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="text-xs font-medium uppercase tracking-[0.3em] text-ochre"
+          className="inline-block w-fit rounded-full bg-cream/80 px-3 py-1 text-xs font-medium uppercase tracking-[0.3em] text-ochre backdrop-blur-sm"
         >
           Golden Timbers · Bengaluru Since 1985
         </motion.p>
