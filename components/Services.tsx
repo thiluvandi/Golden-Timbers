@@ -18,7 +18,7 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-ochre">
-            Sawmill Services
+            Our Services
           </p>
           <h2 className="mt-3 font-display text-4xl leading-tight text-forest sm:text-5xl">
             Beyond timber supply — full sawmilling value-add
